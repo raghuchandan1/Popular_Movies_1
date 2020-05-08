@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="rating">Sort by Rating</string>
+    <string name="popularity">Sort by Popularity</string>
+    <string name="error_message">Failed to fetch the Movies. Try again!!</string>
+    <string name="release_date_text">Release Date</string>
+    <string name="movie_poster_text">Movie Poster</string>
+    <string name="vote_average_text">Vote Average</string>
+    <string name="plot_synopsis_text">Plot Synopsis</string>
+    <string name="detail_error_message">An error has occurred!!</string>
+</resources>
