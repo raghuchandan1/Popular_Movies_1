@@ -34,8 +34,9 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
             return;
         }
+
         String movieTitle=movie.getOriginalTile();
-        Log.i("DetailActivity",movieTitle);
+        //Log.i("DetailActivity",movieTitle);
         movieTitleView.setText(movie.getOriginalTile());
         movieReleaseDateView.setText(movie.getReleaseDate());
         movieVoteAverageView.setText(Double.toString(movie.getVoteAverage()));

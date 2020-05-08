@@ -31,6 +31,8 @@ public class NetworkUtils {
 
     final static String MOVIEDB_BASE_URL =
             "https://api.themoviedb.org/3/discover/movie";
+    final static String MOVIEDB_BASE_SEARCH_URL =
+            "https://api.themoviedb.org/3/movie";
 
     final static String PARAM_API = "api_key";
     //Place your API Key here
@@ -39,14 +41,30 @@ public class NetworkUtils {
      * The sort field. One of stars, forks, or updated.
      * Default: results are sorted by best match if no field is specified.
      */
-    final static String PARAM_SORT = "sort_by";
+    //final static String PARAM_SORT = "sort_by";
     // final static String sortBy = "stars";
 
 
-    public static URL buildUrl(String sortBy) {
+    public static URL buildUrl() {
         Uri builtUri = Uri.parse(MOVIEDB_BASE_URL).buildUpon()
                 .appendQueryParameter(PARAM_API, api_key)
-                .appendQueryParameter(PARAM_SORT, sortBy+".desc")
+                //.appendQueryParameter(PARAM_SORT, sortBy+".desc")
+                .build();
+
+        URL url = null;
+        try {
+            url = new URL(builtUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return url;
+    }
+    public static URL buildUrl(String sortBy) {
+        Uri builtUri = Uri.parse(MOVIEDB_BASE_SEARCH_URL).buildUpon()
+                .appendPath(sortBy)
+                .appendQueryParameter(PARAM_API, api_key)
+                //.appendQueryParameter(PARAM_SORT, sortBy+".desc")
                 .build();
 
         URL url = null;

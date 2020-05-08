@@ -82,7 +82,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         //JSONObject json=new JSONObject(jsonData);
         JsonObject jsonObject = new Gson().fromJson(jsonData, JsonObject.class);
         JsonElement results=jsonObject.get("results");
-        Log.i("MovieAdapter",results.toString());
+        //Log.i("MovieAdapter",results.toString());
         movies = gson.fromJson(results.toString(),Movie[].class);
 
         notifyDataSetChanged();

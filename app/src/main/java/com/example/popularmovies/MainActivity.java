@@ -49,11 +49,18 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         movieTitlesRecyclerView.setAdapter(movieAdapter);
         GridLayoutManager layoutManager=new GridLayoutManager(this,2);
         movieTitlesRecyclerView.setLayoutManager(layoutManager);
-        loadMoviesData("popularity");
+        loadMoviesData();
     }
     private void loadMoviesData(String sortBy) {
         showMoviesDataView();
         URL url=buildUrl(sortBy);
+        Log.i(TAG,url.toString());
+
+        new MovieDBQueryTask().execute(url);
+    }
+    private void loadMoviesData() {
+        showMoviesDataView();
+        URL url=buildUrl();
         Log.i(TAG,url.toString());
 
         new MovieDBQueryTask().execute(url);
@@ -125,12 +132,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         int itemSelected=item.getItemId();
         if(itemSelected==R.id.action_sort_by_popularity){
             //movieAdapter.setMoviesData(null);
-            loadMoviesData("popularity");
+            loadMoviesData("popular");
             return true;
         }
         if(itemSelected==R.id.action_sort_by_rating){
             //movieAdapter.setMoviesData(null);
-            loadMoviesData("vote_average");
+            loadMoviesData("top_rated");
             return true;
         }
         return super.onOptionsItemSelected(item);
